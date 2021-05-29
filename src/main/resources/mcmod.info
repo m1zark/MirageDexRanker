@@ -1,0 +1,19 @@
+[
+  {
+    "modid": "MirageDexRanker",
+    "name": "MirageDexRanker",
+    "description": "MirageCraft's Pokedex ranking plugin.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "SnowBlitzz",
+      "m1zark"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
