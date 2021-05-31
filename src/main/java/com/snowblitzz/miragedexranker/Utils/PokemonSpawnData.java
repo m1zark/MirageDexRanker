@@ -63,7 +63,6 @@ public class PokemonSpawnData {
 
         for (Biome biome : allBiomes) {
             this.biomeNames.add(WordUtils.capitalizeFully(getBiomeName(biome)));
-
             this.biomeNames.replaceAll(b -> b.replace("Foresthills","Forest Hills"));
         }
 
