@@ -66,10 +66,8 @@ public class SharedIcons {
     static ItemStack pokemonIcon(String pokemon) {
         EnumSpecies poke = EnumSpecies.getFromNameAnyCase(pokemon);
         PokemonSpawnData data = new PokemonSpawnData(poke);
-        String idValue = String.format("%03d", poke.getBaseStats().nationalPokedexNumber);
-        String spriteData = "pixelmon:" + GuiResources.getSpritePath(poke, poke.getBaseStats().form, Gender.None, false, false);
+        String idValue = String.format("%03d", poke.getNationalPokedexInteger());
 
-        //ItemStack Item = ItemStack.builder().itemType(Sponge.getRegistry().getType(ItemType.class, "pixelmon:pixelmon_sprite").get()).build();
         ItemStack Item = ItemStackUtil.fromNative(ItemPixelmonSprite.getPhoto(Pixelmon.pokemonFactory.create(poke)));
 
         String rarity = "";
@@ -94,7 +92,6 @@ public class SharedIcons {
         Item.offer(Keys.ITEM_LORE, itemLore);
 
         return Item;
-        //return ItemStack.builder().fromContainer(Item.toContainer().set(DataQuery.of("UnsafeData","SpriteName"), spriteData)).build();
     }
 
     private static String insertLinebreaks(String s, int charsPerLine) {

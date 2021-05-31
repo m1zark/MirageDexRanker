@@ -63,7 +63,7 @@ public class DexUI extends InventoryManager {
         List<String> contents = new ArrayList<>();
 
         for (EnumSpecies e : EnumSpecies.values()) {
-            if(!this.storage.pokedex.hasCaught(e.getNationalPokedexInteger())) {
+            if(!this.storage.pokedex.hasCaught(e)) {
                 contents.add(e.getPokemonName());
             }
         }
