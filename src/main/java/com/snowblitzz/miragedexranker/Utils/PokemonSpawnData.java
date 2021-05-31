@@ -11,7 +11,6 @@ import java.util.*;
 
 import com.pixelmonmod.pixelmon.enums.EnumSpecies;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import org.apache.commons.lang3.text.WordUtils;
 
@@ -72,21 +71,21 @@ public class PokemonSpawnData {
     }
 
     private void setTimeData() {
+        ArrayList<WorldTime> times = new ArrayList();
+
         for (Object sets : SetLoader.getAllSets()) {
             for (SpawnInfo info : ((SpawnSet) sets).spawnInfos) {
-                if (!(info instanceof SpawnInfoPokemon) || !((SpawnInfoPokemon)info).getPokemonSpec().name.equalsIgnoreCase(this.pokemon.getPokemonName())) continue;
-                ArrayList times = info.condition.times;
-
-                try {
-                    if (times != null && times.size() >= 1) {
-                        for (Object time : times) {
-                            if(time instanceof WorldTime) this.spawnTimes.add(((WorldTime) time).name());
-                        }
-                    }
-                } catch(NullPointerException e) {
-                    System.out.print("Error getting time data for: " + this.pokemon.getPokemonName());
-                }
+                if (!(info instanceof SpawnInfoPokemon) || !((SpawnInfoPokemon) info).getPokemonSpec().name.equalsIgnoreCase(this.pokemon.getPokemonName())) continue;
+                times = info.condition.times;
             }
+        }
+
+        try {
+            if (times != null && !times.isEmpty()) {
+                for (WorldTime time : times) this.spawnTimes.add(time.name());
+            }
+        } catch(NullPointerException e) {
+            System.out.print("Error getting time data for: " + this.pokemon.getPokemonName());
         }
     }
 
