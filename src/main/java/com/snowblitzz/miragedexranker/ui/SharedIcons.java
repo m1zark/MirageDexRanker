@@ -86,7 +86,7 @@ public class SharedIcons {
         itemLore.add(Text.of(ChatUtils.embedColours("")));
         itemLore.add(Text.of(ChatUtils.embedColours("&bTimes: &a" + time)));
         itemLore.add(Text.of(ChatUtils.embedColours("&bRarity: &a" + rarity)));
-        itemLore.add(Text.of(ChatUtils.embedColours("&bCatch Rate: &a" + (int)((double)poke.getBaseStats().catchRate / 255.0D * 100.0D))));
+        itemLore.add(Text.of(ChatUtils.embedColours("&bCatch Rate: &a" + (int)((double)poke.getBaseStats().getCatchRate() / 255.0D * 100.0D))));
 
         Item.offer(Keys.DISPLAY_NAME, Text.of(ChatUtils.embedColours("&f" + idValue + " - &6" + pokemon)));
         Item.offer(Keys.ITEM_LORE, itemLore);
